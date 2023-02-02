@@ -252,27 +252,52 @@ $(function(){
         
       </div>
       <div class="modal-footer">
-        <button type="button" id="modalClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      	<button type="button" id="btnDownload" class="btn btn-primary" 
+        	>다운로드</button>
+        <button type="button" id="modalClose" class="btn btn-secondary" 
+        	data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+<iframe id="ifrm" name="ifrm" style="display:none;"></iframe>
 <script type="text/javascript">
+$(function(){
 	//모달 닫기
 	$("#modalClose").on("click",function(){
 		//hide : 닫기 / show : 열기
 		$("#modal-default").modal("hide");//닫기
 	});
-	
-	//이미지 목록의 보기를 클릭 시 정보들을 모달창으로 보냄 
-	$(".btn-outline-primary").on("click", function(){
-		//달러(this) : 
-		//data-filename="............
+	//이미지 목록의 보기를 클릭 시 정보들을 모달창으로 보냄	
+	$(".btn-outline-primary").on("click",function(){
+		//달러(this) : 클래스로 요소들을 선택했을 때 요소들 중에 클릭한 바로 그 "보기"를 의미함
+		//data-filename=".......
 		let filename = $(this).data("filename");
-		console.log("filename : " + filename); 
+		console.log("filename : " + filename);
+		
+		/* sessionStorage
+		- 세션 스토리지는 각각의 URL에 대해 독립적인 저장 공간을 제공함
+		- 저장 공간이 쿠키보다 큼
+		- session은 JSP 내장 객체 vs sessionStorage는 클라이언트 객체(쿠키처럼..)
+		*/
+		//session.setAttribute("filename",filename);
+		sessionStorage.setItem("filename",filename);
+		
 		//modal-body 클래스인 요소에 이미지를 보이자(html은 새로고침, append는 누적)
 		//<div class="modal-body"></div>
 		$(".modal-body").html("<img src='/resources/upload" + filename + 
 				"' style='width:100%;' />");
-	})
+	});
+	
+	
+	
+	//파일 다운로드 하기
+	$("#btnDownload").on("click",function(){
+		let fnm = sessionStorage.getItem("filename");
+		console.log("fnm : " + fnm);
+		//<iframe id="ifrm" name="ifrm" style="display:none;"></iframe>
+		let vIfrm = document.getElementById("ifrm");+
+		vIfrm.src = "/download?fileName="+fnm;
+	});
+});
 </script>

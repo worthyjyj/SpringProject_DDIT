@@ -528,6 +528,9 @@ public class LprodController {
 		//이 파일이 이미지가 아닐 경우 
 		return false; 
 	}
+	
+	//파일 다운로드 
+	
 }
 
 
