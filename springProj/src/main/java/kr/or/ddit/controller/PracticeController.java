@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,6 +27,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.ddit.vo.LprodVO;
 import lombok.extern.slf4j.Slf4j;
+
+/*
+ Controller응답
+ 1. void
+ 2. String
+ 
+ */
+
+
 
 @Slf4j
 @Controller
@@ -142,6 +152,8 @@ public class PracticeController {
 		
 		map.put("key3", vo1);
 		////////////////////////////////
+		
+		
 		
 		log.info("map : " + map);
 		
