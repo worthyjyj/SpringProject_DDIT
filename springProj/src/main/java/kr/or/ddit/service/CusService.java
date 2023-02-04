@@ -10,7 +10,7 @@ import kr.or.ddit.vo.BookVO;
 public interface CusService {
 	
 	//다음 값 가져오는 메서드 
-    public int getNextNum();
+    public String getNextNum();
 
 	
 	

@@ -6,8 +6,8 @@
  -->
 <mapper namespace="cus">
 
-<select id="getNextNum" resultType="int">
-	SELECT NVL(MAX(CUS_NUM),0)+1 FROM CUS
+<select id="getNextNum" resultType="String">
+	SELECT ('CUS' || NVL(TRIM(TO_CHAR((SUBSTR(MAX(CUS_NUM),4,6)+1),'000')),'001')) FROM CUS
 </select>
 
 

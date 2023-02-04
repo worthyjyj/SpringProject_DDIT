@@ -26,8 +26,8 @@ public class CusDao {
 	SqlSessionTemplate sqlSessionTemplate; 
 	
 	//다음 값 가져오는 메서드 
-	public int getNextNum() {
-		int result = this.sqlSessionTemplate.selectOne("cus.getNextNum");
+	public String getNextNum() {
+		String result = this.sqlSessionTemplate.selectOne("cus.getNextNum");
 		return result;
 	}
 

@@ -51,10 +51,16 @@ public class CusController {
 		}
 		
 		//고객번호는 CUS001, CUS002...
-		//자동으로 다음 고객번호를 생성시켜보자 
+		//자동으로 다음 고객번호를 생성시켜보자
 		String cusNum = cusservice.getNextNum();  
 		
+		log.info("cusNum : " + cusNum);
 		cusVO.setCusNum(cusNum);
+		
+		//insert를 진행할거다!! 
+		
+		
+		
 		
 		
 		//입력성공 : 상세보기로 redirect. 기본키 데이터를 파라미터로 보냄
