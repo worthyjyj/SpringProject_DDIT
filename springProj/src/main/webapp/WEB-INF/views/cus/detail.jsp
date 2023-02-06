@@ -26,10 +26,12 @@ $(function(){
     <a class="navbar-brand" href="#">고객관리</a>
   </div>
 </nav>
-<!-- 요청URI : /cus/createPost -->
-<!-- 요청파라미터 : {cusNum=12345,cusNm=개똥이,postno=33233,cusAddr=주소 -->
-<!--           ,addrDet=상세주소,cusPhe=010-123-1223} -->
-<!-- 요청방식 : post -->
+<!-- 폼페이지
+요청URI : /cus/createPost
+요청파라미터 : {cusNum=12345,cusNm=개똥이,postno=33233,cusAddr=주소
+	 	   ,addrDet=상세주소,cusPhe=010-123-1223}
+요청방식 : post
+ -->
 <form:form modelAttribute="cusVO" action="/cus/createPost" method="post">
 <!-- 폼데이터 -->
 <div class="bd-example">
@@ -40,12 +42,12 @@ $(function(){
 		<!-- 꺽임쇄form:input 에는 type="text"랑 id="cusNum"이랑 name="cusNum"이 내장 -->
 		<form:input class="form-control" 
  			path="cusNum" placeholder="고객번호를 입력해주세요" />
-		<!-- path : cusVO객체의 cusNum 멤버변수 //id, name, value에 다 들어감 -->
+		<!-- path : cusVO객체의 cusNum 멤버변수 -->
 		<form:errors path="cusNum" style="color:red;" />
 	</div>
 	<div class="mb-3">
 		<label for="cusNm" class="form-label">고객명</label> 
-		<form:input type="text" class="form-control"
+		<form:input class="form-control"
 			path="cusNm" placeholder="고객명을 입력해주세요" />
 		<form:errors path="cusNm" style="color:red;" />
 	</div>
@@ -85,32 +87,32 @@ $(function(){
 	</div>
 	<div class="mb-3">
 		<label for="hobbyList" class="form-label">취미</label> 
-		<form:checkbox path="hobbyList" value="Music" label="Music"/>
-		<form:checkbox path="hobbyList" value="Movie" label="Movie"/>
-		<form:checkbox path="hobbyList" value="Sports" label="Sports"/>
+		<form:checkbox path="hobbyList" value="Music" label="Music" />
+		<form:checkbox path="hobbyList" value="Movie" label="Movie" />
+		<form:checkbox path="hobbyList" value="Sports" label="Sports" />
 	</div>
 	<div class="mb-3">
-	    <!-- 성별 등록 (남성 : male, 여성 : female, 기타 : others) -->
+		<!-- 성별 등록(남성 : male, 여성 : female, 기타 : others) -->
 		<label for="gender" class="form-label">성별</label> 
-		<form:radiobutton path="gender" value="male" label="male"/>
+		<form:radiobutton path="gender" value="male" label="male" />
 		<!-- cusVO.setGender("female"); -->
-		<form:radiobutton path="gender" value="female" label="female"/>
-		<form:radiobutton path="gender" value="others" label="others"/>
+		<form:radiobutton path="gender" value="female" label="female" />
+		<form:radiobutton path="gender" value="others" label="others" />
 	</div>
 	<div class="mb-3">
-	    <!-- 국적 등록 (한개등록 selectbox) -->
+		<!-- 국적(한개 선택)->select박스 -->
 		<label for="nationality" class="form-label">국적</label> 
 		<form:select path="nationality" items="${nationalityMap}" />
 	</div>
 	<div class="mb-3">
-	    <!-- 고객 : 소유 자동차(List<CarVO> carVOList)  = 1 : N -->
-      <div class="card" style="width: 100%;">
-        <div class="card-header">
-          소유자동차
-        </div>
-        <ul class="list-group list-group-flush">        
-          <li class="list-group-item">
-          <input type="hidden" name="carVOList[0].cusNum" value="${cusNum}" />
+		<!-- 고객 : 소유 자동차(List<CarVO> carVOList)  = 1 : N -->
+		<div class="card" style="width: 100%;">
+		  <div class="card-header">
+		    소유자동차
+		  </div>
+		  <ul class="list-group list-group-flush">		  
+		    <li class="list-group-item">
+		    	<input type="hidden" name="carVOList[0].cusNum" value="${cusNum}" />
 		    	<input type="text" class="form-control" name="carVOList[0].carNum"
 		    		style="width:25%;float:left;" placeholder="자동차번호" required/>
 		    	<input type="text" class="form-control" name="carVOList[0].mnfNum"
@@ -121,7 +123,7 @@ $(function(){
 		    		style="width:25%;float:left;" placeholder="주행거리" />
 		    </li>
 		    <li class="list-group-item">
-	    		<input type="hidden" name="carVOList[1].cusNum"  value="${cusNum}"/>			
+		    	<input type="hidden" name="carVOList[1].cusNum" value="${cusNum}" />
 		    	<input type="text" class="form-control" name="carVOList[1].carNum"
 		    		style="width:25%;float:left;" placeholder="자동차번호" required />
 		    	<input type="text" class="form-control" name="carVOList[1].mnfNum"
@@ -130,9 +132,9 @@ $(function(){
 		    		style="width:25%;float:left;" placeholder="연식" />
 		    	<input type="text" class="form-control" name="carVOList[1].dist"
 		    		style="width:25%;float:left;" placeholder="주행거리" />
-		    </li> 
-        </ul>
-      </div>
+		    </li>
+		  </ul>
+		</div>
 	</div>
 	<div class="mb-3">
 		<button type="submit" class="btn btn-primary btn-lg">등록</button>

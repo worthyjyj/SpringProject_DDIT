@@ -4,8 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Data;
 
 //자동차
+@Data
 public class CarVO {
 	//자동차 번호
 	@NotBlank
@@ -14,6 +18,7 @@ public class CarVO {
 	@NotBlank
 	private String mnfNum;
 	//연식
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dt;
 	//주행 거리
 	private int dist;

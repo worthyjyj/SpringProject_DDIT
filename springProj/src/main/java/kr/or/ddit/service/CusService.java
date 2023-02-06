@@ -1,18 +1,12 @@
 package kr.or.ddit.service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import kr.or.ddit.vo.BookVO;
-
+import kr.or.ddit.vo.CusVO;
 
 public interface CusService {
-	
-	//다음 값 가져오는 메서드 
-    public String getNextNum();
+	//메소드 시그니처
+	public String getCusNum();
 
-	
-	
+	//고객(CUS) 등록
+	public int createPost(CusVO cusVO);
 	
 }

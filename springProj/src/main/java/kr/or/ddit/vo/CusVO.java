@@ -1,10 +1,13 @@
 package kr.or.ddit.vo;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -35,7 +38,25 @@ public class CusVO {
 	private String postno;
 	//주소 상세
 	private String addrDet;
+	//생일 
+	/*
+	 @DateTimeFormat은 input type="date"를 쓴다면 이게 문자열로 넘어가기 때문에 date로 변환이 필요한데 그때 이게 필요함 
+	 2023-02-06(x)<-<input type="date"
+	 20230206(x)
+	 2023/02/06(o)(기본.DateTimeFormat이 없어도 됨)
+	 ** 2023-02-06 이 형식으로 date를 저장하고 불러오고 싶기때문에 패턴을 정해주는것. 
+	 */
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date cusBir; 
+	//취미(여러개 선택) {"Movie", "Sports", "Read"}
+	private List<String> hobbyList; 
+	private String hobby; 
+	//성별(한개 선택) 
+	private String gender; 
+	//국적(한개 선택)-> select박스
+	private String nationality;
 	//고객(CUS) : 자동차(CAR) = 1 : N
+	@Valid
 	private List<CarVO> carVOList;
 	//고객(CUS) : 서비스(SER) = 1 : N
 	private List<SerVO> serVOList;
