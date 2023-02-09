@@ -17,6 +17,7 @@
 		<typeAlias type="kr.or.ddit.vo.LprodVO" alias="lprodVO" />		
 		<typeAlias type="kr.or.ddit.vo.AttachVO" alias="attachVO" />		
 		<typeAlias type="kr.or.ddit.vo.CusVO" alias="cusVO" />		
+		<typeAlias type="kr.or.ddit.vo.EmpVO" alias="empVO" />		
 	</typeAliases>
 </configuration>
 

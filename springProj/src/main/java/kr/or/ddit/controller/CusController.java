@@ -137,6 +137,7 @@ public class CusController {
 		//상세보기 
 		cusVO = this.cusservice.detail(cusVO);
 		
+		
 		//국적(한개 선택)->select박스
 		Map<String, String> nationalityMap = new HashMap<String, String>();
 		nationalityMap.put("Korea","Korea");
