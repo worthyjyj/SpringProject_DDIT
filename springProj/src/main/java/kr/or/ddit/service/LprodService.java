@@ -3,6 +3,8 @@ package kr.or.ddit.service;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
+
 import kr.or.ddit.vo.AttachVO;
 import kr.or.ddit.vo.LprodVO;
 
@@ -33,5 +35,9 @@ public interface LprodService {
 
 	//전체 행의 수 (total)
 	public int getTotal(String keyword);
+
+	public JSONObject cartMoney();
+
+	public JSONObject memeberMoney();
 	
 }

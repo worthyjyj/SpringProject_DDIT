@@ -1,9 +1,10 @@
 package kr.or.ddit.service.impl;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -91,4 +92,108 @@ public class LprodServiceImpl implements LprodService {
 	public int getTotal(String keyword) {
 	    return this.lprodDao.getTotal(keyword); 		
 	}
-}
+	
+	//상품별 판매금액의 합계가 천만원이 넘은 데이터
+	@Override
+	public JSONObject cartMoney(){
+		List<Map<String,Object>> list = this.lprodDao.cartMoney();
+		
+		System.out.println("list : " + list.get(0).toString());
+		
+		//sampleData.json 파일 참고
+		//0. 리턴할 json객체--------------------------
+		JSONObject data = new JSONObject();	//{}
+		
+		//1.cols 배열에 넣기 
+		//JSON 컬럼 객체---------------------------------------------
+		JSONObject col1 = new JSONObject();
+		JSONObject col2 = new JSONObject();
+		//JSON 배열 객체
+		JSONArray title = new JSONArray();
+		col1.put("label", "상품명");
+		col1.put("type", "string");
+		col2.put("label", "금액");
+		col2.put("type", "number");
+		//타이틀행에 컬럼 추가
+		title.add(col1);
+		title.add(col2);
+		
+		//json객체에 타이틀행 추가
+		data.put("cols", title);
+		//{"cols":[{"label":"상품명","type":"string"},{"label":"금액","type":"number"}]}
+		
+		//2.rows 배열에 넣기
+		JSONArray body = new JSONArray();	//rows
+		for(Map<String,Object> map : list) {
+			JSONObject prodName = new JSONObject();
+			prodName.put("v", map.get("PRODNAME"));	//상품명
+			
+			JSONObject money = new JSONObject();
+			money.put("v", map.get("MONEY"));	//금액
+			
+			JSONArray row = new JSONArray();
+			row.add(prodName);
+			row.add(money);
+			
+			JSONObject cell = new JSONObject();
+			cell.put("c", row);
+			body.add(cell);	//레코드 1개 추가
+		}
+		
+		data.put("rows", body);
+		
+		return data;
+	}
+	
+	//상품별 판매금액의 합계가 천만원이 넘은 데이터
+		@Override
+		public JSONObject memeberMoney(){
+			List<Map<String,Object>> list = this.lprodDao.memeberMoney();
+			
+			System.out.println("list : " + list.get(0).toString());
+			
+			//sampleData.json 파일 참고
+			//0. 리턴할 json객체--------------------------
+			JSONObject data = new JSONObject();	//{}
+			
+			//1.cols 배열에 넣기 
+			//JSON 컬럼 객체---------------------------------------------
+			JSONObject col1 = new JSONObject();
+			JSONObject col2 = new JSONObject();
+			//JSON 배열 객체
+			JSONArray title = new JSONArray();
+			col1.put("label", "회원");
+			col1.put("type", "string");
+			col2.put("label", "구매횟수");
+			col2.put("type", "number");
+			//타이틀행에 컬럼 추가
+			title.add(col1);
+			title.add(col2);
+			
+			//json객체에 타이틀행 추가
+			data.put("cols", title);
+			//{"cols":[{"label":"상품명","type":"string"},{"label":"금액","type":"number"}]}
+			
+			//2.rows 배열에 넣기
+			JSONArray body = new JSONArray();	//rows
+			for(Map<String,Object> map : list) {
+				JSONObject MEMID = new JSONObject();
+				MEMID.put("v", map.get("MEMID"));	
+				
+				JSONObject CARTCNT = new JSONObject();
+				CARTCNT.put("v", map.get("CARTCNT"));	//금액
+				
+				JSONArray row = new JSONArray();
+				row.add(MEMID);
+				row.add(CARTCNT);
+				
+				JSONObject cell = new JSONObject();
+				cell.put("c", row);
+				body.add(cell);	//레코드 1개 추가
+			}
+			
+			data.put("rows", body);
+			
+			return data;
+		}
+	}

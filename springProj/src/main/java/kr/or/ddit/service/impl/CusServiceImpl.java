@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.mapper.CusMapper;
 import kr.or.ddit.service.CusService;
@@ -25,6 +26,7 @@ public class CusServiceImpl implements CusService {
 	}
 	
 	//고객(CUS) + 소유자동차(CAR) 등록
+	@Transactional //다중인서트를 해야할 때는 트랜잭셔널을 통해 오류가 났을 때 그 이전에 실행되었던것을 롤백으로 원래 상태로 돌려놓음 (rootContext파일에 설정함) 
 	@Override
 	public int createPost(CusVO cusVO) {
 		int result = 0;
@@ -45,6 +47,11 @@ public class CusServiceImpl implements CusService {
 		log.info("result : " + result);
 		
 		return result;
+	}
+	
+	@Override
+	public CusVO detail(CusVO cusVO) {
+		return this.cusMapper.detail(cusVO);
 	}
 }
 

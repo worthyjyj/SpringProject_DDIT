@@ -17,4 +17,6 @@ public interface CusMapper {
 	//소유자동차(CAR) 등록. 다중 insert 시 update 태그를 사용함
 //	 <update id="createPostCar" parameterType="java.util.List">
 	public int createPostCar(List<CarVO> carVOList);
+	
+	public CusVO detail(CusVO cusVO);
 }

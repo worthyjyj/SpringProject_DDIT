@@ -136,7 +136,19 @@ public class CusController {
 		
 		//상세보기 
 		cusVO = this.cusservice.detail(cusVO);
+		log.info("cusVO : " + cusVO);
 		
+		//[0]   [1]    [2]
+		//str += str + ","
+		//Music,Sports,
+		String hobby = cusVO.getHobby(); 
+		String hobbyArray[] = hobby.split(",");
+		List<String> hobbyList = new ArrayList<String>();
+		for(int i=0; i<hobbyArray.length; i++) {
+			hobbyList.add(hobbyArray[i]);
+		}
+		cusVO.setHobbyList(hobbyList);
+		log.info("cusVO(after) : " + cusVO);
 		
 		//국적(한개 선택)->select박스
 		Map<String, String> nationalityMap = new HashMap<String, String>();
@@ -145,6 +157,7 @@ public class CusController {
 		nationalityMap.put("Germany","Germany");
 		
 		model.addAttribute("nationalityMap", nationalityMap);
+		model.addAttribute("cusVO", cusVO); //오류원인 : form: 으로 연결되니까 cusVO로 매핑해야함
 		
 		//forwarding
 		return "cus/detail";

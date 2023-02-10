@@ -85,4 +85,15 @@ public class LprodDao {
 	public int getTotal(String keyword) {
 		return this.sqlSessionTemplate.selectOne("lprod.getTotal",keyword); 
 	}
+	
+//	 <!-- 상품별 판매금액의 합계가 천만원이 넘은 데이터 -->
+	 public List<Map<String, Object>> cartMoney(){
+		return this.sqlSessionTemplate.selectList("lprod.cartMoney");
+	 }
+	 
+//	 <!-- 회원별 구매회수 구하기 -->
+//	 <select id="memberMoney" resultType="hashMap">
+	 public List<Map<String, Object>> memeberMoney(){
+		 return this.sqlSessionTemplate.selectList("lprod.memberMoney");
+	 }
 }

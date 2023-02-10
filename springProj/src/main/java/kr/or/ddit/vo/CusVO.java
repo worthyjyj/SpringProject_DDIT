@@ -50,7 +50,7 @@ public class CusVO {
 	private Date cusBir; 
 	//취미(여러개 선택) {"Movie", "Sports", "Read"}
 	private List<String> hobbyList; 
-	private String hobby; 
+	private String hobby; //db에 저장되는 취미(다중선택된거..콤마로 연결된.. 다시 데이터 뿌려줄 때는 list에 담아서 선택되도록한다)
 	//성별(한개 선택) 
 	private String gender; 
 	//국적(한개 선택)-> select박스

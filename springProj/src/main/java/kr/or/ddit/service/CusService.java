@@ -8,5 +8,7 @@ public interface CusService {
 
 		//고객(CUS) 등록
 		public int createPost(CusVO cusVO);
+
+		public CusVO detail(CusVO cusVO);
 	
 }
