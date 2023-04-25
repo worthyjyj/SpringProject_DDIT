@@ -1,8 +1,8 @@
 # DDIT_최종프로젝트_GruOffice ![image](https://user-images.githubusercontent.com/108921165/233928626-55c5914b-e081-451e-872d-88fba253ed3e.png)
 ---
 <img src="https://user-images.githubusercontent.com/108921165/233937218-6f2a9af4-cd6d-4437-9104-bd5b1b0f3920.png" width="40" height="40"/> <b>About Project_</b> 
-그룹웨어 기반의 협업을 위한 기능들을 제공하는 웹 서비스로서 
-오프라인 업무를 전환하여 사용하기 위한 시스템
+<h5>그룹웨어 기반의 협업을 위한 기능들을 제공하는 웹 서비스로서 
+오프라인 업무를 전환하여 사용하기 위한 시스템</h5>
 
 <img src="https://user-images.githubusercontent.com/108921165/233938691-7962bf83-929e-4db7-9fd9-6754acded3de.png" width="40" height="40"/> <b>Proj Period_</b> 
 2023-02-02 ~ 2023-04-14 :  총 71일
